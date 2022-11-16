@@ -1,0 +1,92 @@
+body {
+    background: #fafafa;
+    color: #333333;
+    margin-top: 5rem;
+  }
+
+
+ /*start navbar*/
+
+.navbar-brand > span{
+    font-size: 40px;
+  }
+  .navbar-light .navbar-nav .active > .nav-link{
+    color: #ec1c23 !important;
+    font-weight: bold;
+  }
+  
+  
+  .navbar-brand span:first-child{
+    color: #08526d;
+    font-weight: bold;
+  }
+  .navbar-brand span:last-child{
+    color: #ec1c23;
+  }
+  .navbar-nav .nav-link{
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-left: 20px;
+    color: #08526d;
+  }
+  .navbar-brand{
+  margin-bottom: 9px;
+  margin-right: 20px
+  
+  }
+  
+  
+  
+  /*end navbar*/
+  
+  /* login*/
+  .content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+  .content-section form{
+    margin-left: 70px;
+  }
+  .content-section button{
+    margin-top: 20px;
+    margin-left: 55px;
+    font-weight: bold;
+  }
+  
+  .content-section label{
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    margin-left: 45px;
+    margin-top: 5px;
+  }
+  .content-section a:hover{
+    text-decoration: none;
+    color: #dddddd;
+  }
+  
+  /*end login*/ 
+
+  /*footer*/
+.footer{
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    height: 70px;
+    padding-top: 20px;
+    
+  }
+
+  .footer a{
+    color: white;
+  }
+  /*footer*/
+
+
+
+  /* scroll to top*/

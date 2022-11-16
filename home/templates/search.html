@@ -1,0 +1,58 @@
+{% extends "Navbase.html" %}
+{% load static %}
+
+
+{% block Navcontent %}
+    <style>
+        table{
+            margin-top: 30px;
+            margin-bottom: 70px;
+            border: 1px solid #D6EEEE;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          th, td {
+            height:50px;
+            padding-left: 10px;
+            font-size: 18px;
+          }
+          tr:nth-child(even) {
+            background-color: #D6EEEE;
+          }
+          h1{
+            margin-top: 45px;
+            margin-bottom: 50px;
+            color: #08526d;
+          }
+          a{
+            color: black;
+          }
+          
+    </style>
+
+    <div>
+        <p class="text-center my-search lead">You have searched for: <b>"{{query}}"</b></p>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center">Device Management Dashboard</h1>
+        <table id="parent">
+            <tr>
+                
+                <th>Site Name</th>
+                <th>User Name</th>
+                <th>User ID</th>
+                <th>Date Created</th>
+            </tr> 
+        {% for data in data %}
+        <tr>
+            <td><a href="{% url 'detail' data.id %}">{{data.site_name}}</a></td>
+            <td>{{data.user_name}}</td>
+            <td>{{data.user_number}}</td>
+            <td>{{data.created}}</td>
+        </tr> 
+        {% endfor %}
+        </table>
+    </div>
+   
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+    <style>
+        h1{
+            margin-top: 65px;
+            margin-bottom: 50px;
+            color: #08526d;
+          }
+          table{
+            width: 100%;
+          }
+          table, th, td {
+            border: 1px solid white;
+            border-collapse: collapse;
+            
+          }
+          th, td {
+            background-color: #96D4D4;
+          }
+          img{
+            margin-left: 30%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+          }
+          .printit{
+            margin-left: 40%;
+          }
+    </style>
+
+
+    <div class="container">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="col-4"></div>
+        <div class="col-4">
+      <a class="navbar-brand ml-4" href=""><span>Audio</span> <span>Care</span></a>
+        </div>
+    </nav>
+
+
+
+    
+    {% for detail in detail %}
+    <h1 class="text-center"> {{detail.site_name}} Detail</h1>
+    
+    <table>
+        <tr>
+            <th>Site Name</th>
+            <th>User Name</th>
+            <th>User Number</th>
+            <th>Date Created</th>
+        </tr>
+        <tr>
+            <td>{{detail.site_name}}</td>
+            <td>{{detail.user_name}}</td>
+            <td>{{detail.user_number}}</td>
+            <td>{{detail.created}}</td>
+        </tr>
+    </table>
+
+    <img src="{{detail.qr.url}}" id="parent">
+    <div>
+    <button class="btn btn-primary printit" onclick='myApp.printDiv()'>Print QR Code</button>
+    </div>
+    
+
+    {% endfor %}
+
+    </div>
+
+{%endblock%}

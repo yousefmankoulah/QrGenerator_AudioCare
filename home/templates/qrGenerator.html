@@ -1,0 +1,136 @@
+<!-- templates/index.html -->
+
+
+{% extends "Navbase.html" %}
+{% load static %}
+{% load qr_code %}
+
+
+
+{% block Navcontent %}
+
+    <style>
+        *{
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        h1{
+            color: #08526d;
+          }
+        main{
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button{
+            width: 100%;
+            max-width: 200px;
+            padding: 10px;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-left: 200px;
+        }
+
+        button:hover{
+            background-color: #ddd;
+        }
+
+        .qr-img{
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .qr-img img{
+            width: 100%;
+        }
+        .footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .searchForm{
+            display: none;
+        }
+        ul{
+            list-style: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <main>
+        <br><br>
+
+        {% if messages %}
+        <ul class="alert alert-primary"  id="box" role="alert">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <h1 class="text-center">
+            QR code generator
+        </h1>
+        <br><br><br>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="site_name" id="roll" placeholder="Enter the site name">
+            <input type="text" name="user_number" id="roll2" placeholder="Enter the user number">
+            <input type="text" name="user_name" id="roll3" placeholder="Enter the user name">            
+            <button class="btn btn-primary" onClick="return empty()">Generate QR</button>
+        </form>
+
+        <div class="qr-img">
+            {% if img_name %}
+                <img src="/media/{{ img_name }}" alt="qr code"  id="parent" onclick='myApp.printDiv()'>
+            {% endif %}
+        </div>
+    </main>
+
+    
+
+    <script>
+        // hide sucess message
+    setTimeout(() => {
+    const box = document.getElementById('box');
+  
+    // removes element from DOM
+    box.style.display = 'none';
+    }, 2000); //  time in milliseconds
+
+
+    // prevent reload page
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+
+
+    //prevent submitting empty form
+    function empty() {
+        var x;
+        var y;
+        var z;
+        x = document.getElementById("roll").value;
+        y = document.getElementById("roll2").value;
+        z = document.getElementById("roll3").value;
+        if (x == "" || y == "" || z == "") {
+            alert("Enter a Valid Value");
+            return false;
+        };
+    }
+
+    </script>
+
+    {% endblock %}
