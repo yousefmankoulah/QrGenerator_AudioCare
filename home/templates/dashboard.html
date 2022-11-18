@@ -30,7 +30,13 @@
           .pagination{
             margin-left: 45%;
           }
-         
+         @media screen and (max-width: 850px){
+              #parent{
+                  width: 70%;
+                  margin-left: 5px;
+                  font-size: 15px;
+              }
+          }
     </style>
 
 
@@ -53,7 +59,7 @@
         </tr> 
         {% endfor %}
         </table>
-    </div>
+   
 
       {% if data.has_other_pages %}
   <ul class="pagination">
@@ -76,6 +82,6 @@
     {% endif %}
   </ul>
 {% endif %}
-
+ </div>
 
 {% endblock %}
