@@ -67,6 +67,13 @@
             list-style: none;
         }
         
+         @media screen and (max-width: 850px){
+            .generate{
+                margin-left: 50px;
+            }
+
+        }
+        
     </style>
 </head>
 <body>
@@ -89,7 +96,7 @@
             <input type="text" name="site_name" id="roll" placeholder="Enter the site name">
             <input type="text" name="user_number" id="roll2" placeholder="Enter the user number">
             <input type="text" name="user_name" id="roll3" placeholder="Enter the user name">            
-            <button class="btn btn-primary" onClick="return empty()">Generate QR</button>
+            <button class="btn btn-primary generate" onClick="return empty()">Generate QR</button>
         </form>
 
         <div class="qr-img">
