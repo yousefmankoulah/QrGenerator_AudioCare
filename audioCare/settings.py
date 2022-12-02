@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'home',
     'qr_code',
-    
+    'import_export',
 ]
 
 MIDDLEWARE = [
