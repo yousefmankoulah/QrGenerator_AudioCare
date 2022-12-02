@@ -1,9 +1,10 @@
 from django.contrib import admin
 from .models import DeviceManagment
+from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
 
-class DeviceAdmin(admin.ModelAdmin):
+class DeviceAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ['site_name', 'user_name', 'user_number']
     ordering = ['site_name']
     list_filter = ['site_name', 'user_name']
