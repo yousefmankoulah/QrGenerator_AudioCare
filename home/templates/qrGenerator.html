@@ -3,7 +3,7 @@
 
 {% extends "Navbase.html" %}
 {% load static %}
-{% load qr_code %}
+
 
 
 
@@ -66,14 +66,12 @@
         ul{
             list-style: none;
         }
-        
-         @media screen and (max-width: 850px){
+        @media screen and (max-width: 850px){
             .generate{
                 margin-left: 50px;
             }
 
         }
-        
     </style>
 </head>
 <body>
@@ -94,8 +92,17 @@
         <form method="post">
             {% csrf_token %}
             <input type="text" name="site_name" id="roll" placeholder="Enter the site name">
-            <input type="text" name="user_number" id="roll2" placeholder="Enter the user number">
-            <input type="text" name="user_name" id="roll3" placeholder="Enter the user name">            
+            <input type="text" name="serial_number" id="roll2" placeholder="Enter the serial number">
+
+            <label for="site_type" class="lead">Choose the Site Type:</label>
+            <select name="site_type" id="roll3">
+            <option value="DOD">DOD</option>
+            <option value="VA">VA</option>
+            <option value="IHS">IHS</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Market-Inhouse">Market-Inhouse</option>
+            </select>
+
             <button class="btn btn-primary generate" onClick="return empty()">Generate QR</button>
         </form>
 
@@ -106,13 +113,13 @@
         </div>
     </main>
 
-    
+
 
     <script>
         // hide sucess message
     setTimeout(() => {
     const box = document.getElementById('box');
-  
+
     // removes element from DOM
     box.style.display = 'none';
     }, 2000); //  time in milliseconds
