@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from qrcode import *
 import time
-from .models import DeviceManagment
+from .models import DeviceManagmentService
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -44,12 +44,12 @@ def signoutView(request):
 def qr_gen(request):
     if request.method == 'POST':
         data1 = request.POST['site_name']
-        data2 = request.POST['user_name']
-        data3 = request.POST['user_number']        
+        data2 = request.POST['site_type']
+        data3 = request.POST['serial_number']        
 
         #saving data to database
         img_name = 'qr' + str(time.time()) + '.png'
-        store_data = DeviceManagment(site_name=data1, user_name=data2, user_number=data3, qr=img_name)    
+        store_data = DeviceManagmentService(site_name=data1, site_type=data2, serial_number=data3, qr=img_name)    
         store_data.save()
         
         #---------------------you have to edit the link after you upload the webiste-------------------------#
@@ -73,7 +73,7 @@ def qr_gen(request):
 #-----------------start getting data from database-------#
 @login_required
 def dashboard(request):
-    data = DeviceManagment.objects.all()
+    data = DeviceManagmentService.objects.all()
     page = request.GET.get('page', 1)
 
     paginator = Paginator(data, 15)
@@ -88,7 +88,7 @@ def dashboard(request):
 
 
 def siteDetail(request, id):
-    detail = DeviceManagment.objects.filter(id=id)
+    detail = DeviceManagmentService.objects.filter(id=id)
     return render(request, 'siteDetail.html', {'detail': detail})
     
 
@@ -103,9 +103,9 @@ def searchResult(request):
     query = None
     if 'q' in request.GET:
         query = request.GET.get('q')
-        posts = DeviceManagment.objects.all().filter(Q(site_name__contains=query) |
-                                            Q(user_name__contains=query) |
-                                            Q(user_number__contains=query))
+        posts = DeviceManagmentService.objects.all().filter(Q(site_name__contains=query) |
+                                            Q(site_type__contains=query) |
+                                            Q(serial_number__contains=query))
     
     return render(request, 'search.html', {'query': query, 'data': posts})
 ## end search
