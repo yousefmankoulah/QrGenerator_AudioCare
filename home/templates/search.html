@@ -40,15 +40,15 @@
             <tr>
                 
                 <th>Site Name</th>
-                <th>User Name</th>
-                <th>User ID</th>
+                <th>Site Type</th>
+                <th>Serial Number</th>
                 <th>Date Created</th>
             </tr> 
         {% for data in data %}
         <tr>
             <td><a href="{% url 'detail' data.id %}">{{data.site_name}}</a></td>
-            <td>{{data.user_name}}</td>
-            <td>{{data.user_number}}</td>
+            <td>{{data.site_type}}</td>
+            <td>{{data.serial_number}}</td>
             <td>{{data.created}}</td>
         </tr> 
         {% endfor %}
