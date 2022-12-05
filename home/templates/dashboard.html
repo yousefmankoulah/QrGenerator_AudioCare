@@ -37,29 +37,32 @@
                   font-size: 15px;
               }
           }
+
     </style>
 
 
     <div class="container">
         <h1 class="text-center">Device Management Dashboard</h1>
-        <table id="parent">
+    <div class="table-responsive">
+        <table id="parent" class="table">
             <tr>
-                
+
                 <th>Site Name</th>
-                <th>User Name</th>
-                <th>User ID</th>
+                <th>Site Type</th>
+                <th>Serial Number</th>
                 <th>Date Created</th>
-            </tr> 
+            </tr>
         {% for data in data %}
         <tr>
             <td><a href="{% url 'detail' data.id %}">{{data.site_name}}</a></td>
-            <td>{{data.user_name}}</td>
-            <td>{{data.user_number}}</td>
+            <td>{{data.site_type}}</td>
+            <td>{{data.serial_number}}</td>
             <td>{{data.created}}</td>
-        </tr> 
+        </tr>
         {% endfor %}
         </table>
-   
+
+    </div>
 
       {% if data.has_other_pages %}
   <ul class="pagination">
@@ -82,6 +85,6 @@
     {% endif %}
   </ul>
 {% endif %}
- </div>
+    </div>
 
 {% endblock %}
