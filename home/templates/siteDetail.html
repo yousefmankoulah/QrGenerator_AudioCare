@@ -15,7 +15,7 @@
           table, th, td {
             border: 1px solid white;
             border-collapse: collapse;
-            
+
           }
           th, td {
             background-color: #96D4D4;
@@ -28,8 +28,9 @@
           .printit{
             margin-left: 40%;
           }
-        
-        @media screen and (max-width: 850px){
+
+
+          @media screen and (max-width: 850px){
               .titleNav{
                   margin-left: 10px;
                   font-size: 20px;
@@ -49,38 +50,42 @@
     <div class="container">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="col-4"></div>
-        <div class="col-4">
+        <div class="row">
+        <div class="col-xs-1 col-md-4 col-lg-4 col-xl-4"></div>
+        <div class="col-xs-4 col-md-4 col-lg-4 col-xl-4">
       <a class="navbar-brand ml-4 titleNav" href=""><span>Audio</span> <span>Care</span></a>
         </div>
+        </div>
+
     </nav>
 
 
 
-    
+
     {% for detail in detail %}
     <h1 class="text-center"> {{detail.site_name}} Detail</h1>
-    
+
     <table>
         <tr>
             <th>Site Name</th>
-            <th>User Name</th>
-            <th>User Number</th>
+            <th>Site Type</th>
+            <th>Serial Number</th>
             <th>Date Created</th>
         </tr>
         <tr>
             <td>{{detail.site_name}}</td>
-            <td>{{detail.user_name}}</td>
-            <td>{{detail.user_number}}</td>
+            <td>{{detail.site_type}}</td>
+            <td>{{detail.serial_number}}</td>
             <td>{{detail.created}}</td>
         </tr>
     </table>
 
     <img src="{{detail.qr.url}}" id="parent">
+
     <div>
     <button class="btn btn-primary printit" onclick='myApp.printDiv()'>Print QR Code</button>
     </div>
-    
+
 
     {% endfor %}
 
