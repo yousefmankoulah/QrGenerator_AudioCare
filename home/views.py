@@ -17,19 +17,25 @@ from django.db.models import Q
 #-------------start register---------------#
 def signInView(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                messages.info(request, "You are now logged in.")
                 return redirect('home')
             else:
-                print("error")
+                messages.error(request,"Invalid username or password.")
+
+        else:
+            messages.error(request,"Invalid username or password.")
+
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
 
 
 
