@@ -77,14 +77,13 @@
 <body>
     <main>
         <br><br>
-
         {% if messages %}
         <ul class="alert alert-primary"  id="box" role="alert">
-            {% for message in messages %}
-            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
+            <li>Qr code Generated</li>
         </ul>
         {% endif %}
+        
+        
         <h1 class="text-center">
             QR code generator
         </h1>
